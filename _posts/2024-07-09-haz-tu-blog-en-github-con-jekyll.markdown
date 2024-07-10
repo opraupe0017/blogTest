@@ -3,6 +3,7 @@ layout: post
 title:  "¡Has tu propio blog usando Markdown, Jekyll y GitHub!"
 date:   2024-07-09 22:03:09 -0500
 categories: blog markdown jekyll github update
+author: Oscar García
 ---
 
 Crear tu propio blog nunca ha sido tan fácil. Con Markdown, Jekyll y GitHub, puedes configurar y personalizar un blog profesional de manera rápida y sencilla, sin necesidad de conocimientos avanzados de programación. ¡Sigue esta guía paso a paso para comenzar hoy mismo!
@@ -48,8 +49,6 @@ La cuenta de usuario de GitHub nos permite alojar nuestro sitio web (ponerlo a d
 7. Opcional: puedes visitar [GitHub Profile Settings](https://github.com/settings/profile) para agregar un nombre completo (puede ser tu nombre real, nombre de usuario de GitHub u otra cosa) y más información de perfil público, si lo deseas.
 
 ## Crea un proyecto en GitHub para tu blog
-
-## Instructivo para crear un proyecto en GitHub
 
 ### ¿Qué es un proyecto en GitHub?
 
