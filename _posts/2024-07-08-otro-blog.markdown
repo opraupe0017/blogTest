@@ -15,6 +15,7 @@ print('Hello World!')
 ```
 
 ![bfs](assets/BFS_cormen_stepbystep_process.png)
+<img src="/blog/assets/BFS_cormen_stepbystep_process.png" alt="BFS">
 
 `YEAR-MONTH-DAY-title.MARKUP`
 
