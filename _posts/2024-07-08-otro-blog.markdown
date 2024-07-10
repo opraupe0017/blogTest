@@ -14,7 +14,7 @@ $$a = \sqrt{b^2 + c^2}.$$
 print('Hello World!')
 ```
 
-![bfs](/images/BFS_cormen_stepbystep_process.png)`
+![bfs](assets/BFS_cormen_stepbystep_process.png)
 
 `YEAR-MONTH-DAY-title.MARKUP`
 
