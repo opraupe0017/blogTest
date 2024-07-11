@@ -198,11 +198,11 @@ github_username:  opraupe0017
 
 ### Cómo insertar símbolos matemáticos en tu blog
 
-1. **Crear carpeta `_layouts`:** En tu proyecto crea una carpeta llamada `.../[nombre-de-tu-blog]/_layouts/`.
+1. **Crear carpeta `_layouts`:** En tu proyecto crea una carpeta llamada `.../[tu-nombre-del-blog]/_layouts/`.
 
-2. **Crea el archivo** `.../[nombre-de-tu-blog]/_layouts/default.html`.
+2. **Crea el archivo** `.../[tu-nombre-del-blog]/_layouts/default.html`.
 
-3. **El contenido de `default.html:`** Este debe ser el contenido de `.../[nombre-de-tu-blog]/_layouts/default.html`. 
+3. **El contenido de `default.html:`** Este debe ser el contenido de `.../[tu-nombre-del-blog]/_layouts/default.html`. 
 
    ```html
    [... contenido original de default.html ...]
@@ -222,17 +222,17 @@ github_username:  opraupe0017
 
 **Importante:** No será visible en la prueba local las imágenes, estas se verán en el despliegue.
 
-1. **Crear carpeta `assets`:** En tu proyecto crea una carpeta llamada `.../[nombre-de-tu-blog]/assets/`.
+1. **Crear carpeta `assets`:** En tu proyecto crea una carpeta llamada `.../[tu-nombre-del-blog]/assets/`.
 
 2. **Inserta las imágenes en `assets`:** En esta carpeta y cuando estés haciendo un post puedes mostrar una imagen con este comando dentro de tu post (en Markdown):
 
    ```markdown
-   <img src="/blogTest/assets/mi_imagen.png" alt="gif: mi_imagen">
+   <img src="/[tu-nombre-del-blog]/assets/mi_imagen.png" alt="gif: mi_imagen">
    ```
 
 ### Crea tu primer post
 
-1. **Los post de tu blog en Jekyll son en Markdown**. Debes crear en el directorio `~/[nombre-de-tu-blog]/_posts/` un archivo markdown llamado `20YY-MM-DD-nombre-de-tu-post.markdown` el cual será visible en tu blog si la fecha no es a futuro. Para este ejemplo haremos el post `2024-07-10-post-de-ejemplo.markdown`.
+1. **Los post de tu blog en Jekyll son en Markdown**. Debes crear en el directorio `~/[tu-nombre-del-blog]/_posts/` un archivo markdown llamado `20YY-MM-DD-nombre-de-tu-post.markdown` el cual será visible en tu blog si la fecha no es a futuro. Para este ejemplo haremos el post `2024-07-10-post-de-ejemplo.markdown`.
 
 2. **Contenido del post:** Este es un contenido de ejemplo del post:
 
@@ -252,7 +252,7 @@ Este es un post de ejemplo.
 
 $$AB^2 = BC^2 + CA^2.$$
 
-<img src="/blogTest/assets/tma_pitagoras.png" alt="img: teorema pitágoras">
+<img src="/comoHacerUnBlog/assets/tma_pitagoras.png" alt="img: teorema pitágoras">
 
 Para más información visitar este [link][Teorema de Pitágoras en Wikipedia]
 
@@ -305,10 +305,96 @@ A continuación comparto algunas capturas del blog de ejemplo `comoHacerUnBlog`:
 #### Post de ejemplo
 <img src="/blogTest/assets/post_ejm.png" alt="img: post de ejemplo">
 
+**Si hasta este punto nuestro blog funciona bien localmente, sin mostrar imágenes, ¡estamos listos para prepararnos a subir a la web!**
+
+## Hacer ajustes de tu blog local para que funciones en la web
+
+Una vez validas que tu blog funciona de manera adecuada de forma local, salvo las imágenes (estas sólo funcionarán bien en la web), comencemos por hacer los ajustes previos a subir a remoto nuestro proyecto a GitHub.
+
+1. **Encontrar en tu proyecto el archivo** `Gemfile` y descomentar (quitar al inicio de la línea el símbolo `#`) la línea gem `"wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]`
+
+2. **Encontrar el archivo `_config.yml`** para agregar en `baseurl` el valor `[tu-nombre-del-blog]` y en la clave `url` colocar el valor `https://[tu-usuario-de-github].github.io/[tu-nombre-del-blog]`. En mi caso quedaría así:
+
+   ```yml
+   baseurl: "/comoHacerUnBlog"
+   url: "https://opraupe0017.github.io/comoHacerUnBlog"
+   ```
+
+**¡Ahora estamos listos para subir a remoto!**
+
 ## Hacer tu blog visible en la red desplegándolo en GitHub
 
-### Guardar progreso del blog en Git local `git add, git commit, git pull`
+### Subir a remoto de GitHub el blog `git status, add, git commit`
 
-### Guardar progreso del blog en Git Remoto `git push`
+Nuestro proyecto siempre estuvo en la rama main.
 
-### “Hosting” en GitHub Pages
+1. **Usar `git status`** para ver los cambios que hemos realizado en nuestro proyecto. Como aún no hemos subido nada de nuestro blog al proyecto esto es lo que aparece:
+
+   ```bash
+   USUARIO@DESKTOP-K7QQL5C MINGW64 ~/Documents/GitHub/comoHacerUnBlog (main)
+   $ git status
+   On branch main
+   Your branch is up to date with 'origin/main'.
+
+   Untracked files:
+     (use "git add <file>..." to include in what will be committed)
+           .gitignore
+           404.html
+           Gemfile
+           Gemfile.lock
+           _config.yml
+           _layouts/
+           _posts/
+           about.markdown
+           assets/
+           index.markdown
+
+   nothing added to commit but untracked files present (use "git add" to track)
+   ```
+
+2. **Usar `git add .`** para indicar que a todos los directorios y archivos del paso anterior los vamos a almacenar en un solo punto de la historia de nuestro control de versiones en GitHub.
+
+3. **Usar `git commit -m "feat: nuevo blog"`** para indicar el motivo de fijar en la historia de nuestro proyecto de GitHub a todos los archivos y carpetas.
+
+4. **Usar `git push`** para subir a remoto todos nuestro blog.
+
+**¡Listo, ahora nuestro blog está en GitHub!** Pero aún no funciona como un sitio web, en la última sección veremos cómo lo logramos.
+
+## "Hosting" en GitHub Pages
+
+Estamos a nada de que tu blog lo pueda ver el mundo entero, sigue estos últimos pasos y tu blog será publicado en la web.
+
+1. En la página de GitHub pages de tu proyecto encontrarás un desplegable en la sección **branch**. La página concreta debería ser:
+
+   ```url
+   https://github.com/[tu-usuario-de-github]/[tu-nombre-del-blog]/settings/pages
+   ```
+
+2. En la sección **Build and deployment**
+   
+   - Source debe estar en modo **Deploy from a btanch**. Esto permite hacer un despliegue desde una rama de tu proyecto de GitHub.
+
+   - Branch debe estar en la rama **main**. Recuerda que todo el desarrollo del blog lo hiciste en la rama **main**.
+
+   - **¡Selecciona la opción Save y listo!**
+
+3. Para ver el proceso de despliegue de tu página web puedes ir a **Actions** para monitorear el estado del despliegue de tu blog sobre GitHub. Cuando todo esté en luz verde podrás acceder a la página. Recuerda que la página de tu blog será `https://[tu-usuario-de-github].github.io/[tu-nombre-del-blog]`.
+
+¡Y esto es todo, ya tienes tu propio blog en línea y gratis!
+
+### Capturas del blog de ejemplo
+
+Para el ejemplo que he realizado en este post, el link del resultado final es este: [https://opraupe0017.github.io/comoHacerUnBlog/](https://opraupe0017.github.io/comoHacerUnBlog/)
+
+Comparto las capturas del blog, nota que la url ya no es local.
+
+#### Página principal
+<img src="/blogTest/assets/pagina_ppal_2.png" alt="img: página principal">
+
+#### About
+<img src="/blogTest/assets/acerca_de_2.png" alt="img: acerca de mi">
+
+#### Post de ejemplo ¡Ahora si aparece la imagen!
+<img src="/blogTest/assets/post_ejm_2.png" alt="img: post de ejemplo">
+
+**Muchas gracias por leer este post**
