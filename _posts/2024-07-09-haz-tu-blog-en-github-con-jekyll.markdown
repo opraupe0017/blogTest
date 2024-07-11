@@ -198,11 +198,11 @@ github_username:  opraupe0017
 
 ### Cómo insertar símbolos matemáticos en tu blog
 
-1. **Crear carpeta `_layout`:** En tu proyecto crea una carpeta llamada `.../[nombre-de-tu-blog]/_layout/`.
+1. **Crear carpeta `_layouts`:** En tu proyecto crea una carpeta llamada `.../[nombre-de-tu-blog]/_layouts/`.
 
-2. **Crea el archivo** `.../[nombre-de-tu-blog]/_layout/default.html`.
+2. **Crea el archivo** `.../[nombre-de-tu-blog]/_layouts/default.html`.
 
-3. **El contenido de `default.html:`** Este debe ser el contenido de `.../[nombre-de-tu-blog]/_layout/default.html`. 
+3. **El contenido de `default.html:`** Este debe ser el contenido de `.../[nombre-de-tu-blog]/_layouts/default.html`. 
 
    ```html
    [... contenido original de default.html ...]
