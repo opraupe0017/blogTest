@@ -30,6 +30,27 @@ En esta sección, las instrucciones para usuarios de Windows difieren de las de 
    
    `Install MSYS2 and MINGW development toolchain succeeded o Se han instalado con éxito las herramientas de desarrollo MSYS2 y MINGW`
 
+### Intalar Jekyll en Windows 11
+
+[Jekyll](https://jekyllrb.com/) es el código que crea o genera tu página web (por ejemplo, “generación de página), haciendo más fácil las tareas comunes como usar la misma plantilla (mismo logo, menú, información de autor…) en todas las páginas de entradas de blog. Ahora instalaremos Jekyll (si la Seguridad de Windows te muestra un aviso, ignóralo):
+
+1. Sólo basta con ejecutar en una consola de `PowerShell` o `CMD` lo siguiente:
+
+   ```cmd
+   >> gem install jekyll bundler
+   ```
+
+2. Para asegurarte de que todo va bien, escribe `jekyll -v` en el aviso y presiona “`Intro`”. Debería de devolver la versión de Jekyll que tengas instalada en tu computadora en ese momento.
+
+   Para la fecha en la que estoy escribiendo este post estoy usando actualmente esta versión.
+
+   ```cmd
+   >> jekyll -v
+   jekyll 4.3.3
+   ```
+
+**¡Felicitaciones, hemos terminado de instalar todo lo necesario para crear nuestro sitio web!.**
+
 ## Crear tu cuenta en GitHub
 
 ### ¿Qué es una cuenta de GitHub?
@@ -80,7 +101,7 @@ Un proyecto en GitHub es un repositorio que contiene los archivos y recursos rel
 ### Bajar tu proyecto de remoto a local `git clone`
 
 1. Busca una ruta adecuada en tu computador para alojar de manera local tu proyecto.
-<img src="/blogTest/assets/encontrando_un_lugar_github.gif" alt="gif: encontrando un lugar">
+   <img src="/blogTest/assets/encontrando_un_lugar_github.gif" alt="gif: encontrando un lugar">
 
 2. Ejecuta `git clone` de tu proyecto y ingresas a la carpeta del proyecto `[tu-nombre-del-blog]`:
    ```cmd
@@ -90,15 +111,199 @@ Un proyecto en GitHub es un repositorio que contiene los archivos y recursos rel
 
 A partir de este momento en tu carpeta `[tu-nombre-del-blog]` se encuentra una copia local de la rama `main` del proyecto.
 
+Para nuestro ejemplo este sería el resultado:
+
+```bash
+USUARIO@DESKTOP MINGW64 ~/Documents/GitHub
+$ git clone https://github.com/opraupe0017/comoHacerUnBlog.git
+Cloning into 'comoHacerUnBlog'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+USUARIO@DESKTOP MINGW64 ~/Documents/GitHub
+$ cd comoHacerUnBlog/
+
+USUARIO@DESKTOP MINGW64 ~/Documents/GitHub/comoHacerUnBlog (main)
+$
+```
+
 ## Crea tu nuevo blog con Jekyll
+
+1. **Identifica la carpeta padre** donde está tu proyecto. En el ejemplo que tenemos aquí se llama `~/Documents/GitHub/`. Puedes uase el comando `cd ..`, ejemplo:
+
+   ```cmd
+   PS C:\Users\USUARIO\Documents\GitHub\comoHacerUnBlog> cd ..
+   PS C:\Users\USUARIO\Documents\GitHub>
+   ```
+
+2. **Crea tu sitio web con Jekyll:** En una consola de `PowerShell` o `CMD` de Windows ejecuta `jekyll new [nombre-del-blog] --force`. En nuestro ejemplo quedaría así:
+
+   ```cmd
+   >> jekyll new comoHacerUnBlog --force
+   ```
 
 ### Ejecutar tu blog localmente
 
+Estamos a pocos pasos para lograr ver nuestro blog de forma local en nuestro computador.
+
+### Error en la creación del blog por `wdm (0.1.1)`
+
+Si nos sale este error al ejecutar `jekyll new [nombre-del-blog] --force`.
+
+```cmd
+  Bundler: An error occurred while installing wdm (0.1.1), and Bundler cannot continue.
+  Bundler:
+  Bundler: In Gemfile:
+  Bundler: wdm
+```
+
+**Encontrar en tu proyecto el archivo** `Gemfile` y comentar (colocar al inicio de la línea el símbolo `#`) la línea gem `"wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]`
+
+### Configura tu blog
+
+#### Edita el archivo `_config.yml`
+
+**Personaliza tu blog** indicando la información del mismo. En el archivo `_config.yml` podemos realizar tal acción. Originalmente aparece esta información:
+
+```yaml
+title: Your awesome title
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+```
+
+En nuestro ejemplo esta será la información:
+
+```yaml
+title: Cómo hacer un blog
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Aprende a crear y administrar tu propio blog con esta guía paso a paso. 
+  Encuentra consejos sobre configuración, diseño, contenido y mucho más. 
+  ¡Comienza a compartir tus ideas con el mundo hoy mismo!
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: opraupe0017
+github_username:  opraupe0017
+```
+
+### Cómo insertar símbolos matemáticos en tu blog
+
+1. **Crear carpeta `_layout`:** En tu proyecto crea una carpeta llamada `.../[nombre-de-tu-blog]/_layout/`.
+
+2. **Crea el archivo** `.../[nombre-de-tu-blog]/_layout/default.html`.
+
+3. **El contenido de `default.html:`** Este debe ser el contenido de `.../[nombre-de-tu-blog]/_layout/default.html`. 
+
+   ```html
+   [... contenido original de default.html ...]
+
+   <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         inlineMath: [['$','$'], ['\\(','\\)']],
+         processEscapes: true
+       }
+     });
+   </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+   ```
+
 ### Insertar imágenes en tu blog
 
-### Insertar símbolos matemáticos en tu blog
+**Importante:** No será visible en la prueba local las imágenes, estas se verán en el despliegue.
+
+1. **Crear carpeta `assets`:** En tu proyecto crea una carpeta llamada `.../[nombre-de-tu-blog]/assets/`.
+
+2. **Inserta las imágenes en `assets`:** En esta carpeta y cuando estés haciendo un post puedes mostrar una imagen con este comando dentro de tu post (en Markdown):
+
+   ```markdown
+   <img src="/blogTest/assets/mi_imagen.png" alt="gif: mi_imagen">
+   ```
 
 ### Crea tu primer post
+
+1. **Los post de tu blog en Jekyll son en Markdown**. Debes crear en el directorio `~/[nombre-de-tu-blog]/_posts/` un archivo markdown llamado `20YY-MM-DD-nombre-de-tu-post.markdown` el cual será visible en tu blog si la fecha no es a futuro. Para este ejemplo haremos el post `2024-07-10-post-de-ejemplo.markdown`.
+
+2. **Contenido del post:** Este es un contenido de ejemplo del post:
+
+```markdown
+---
+layout: post
+title:  "Post de ejemplo"
+date:   2024-07-10 21:41:13 -0500
+categories: markdoown jekyll github update
+author: Oscar García
+---
+Este es un post de ejemplo.
+
+## Teorema de pitágoras
+
+*Dado un triángulo rectángulo* $\triangle ABC$ *con ángulo recto en el punto* $C$ *se cumple que*
+
+$$AB^2 = BC^2 + CA^2.$$
+
+<img src="/blogTest/assets/tma_pitagoras.png" alt="img: teorema pitágoras">
+
+Para más información visitar este [link][Teorema de Pitágoras en Wikipedia]
+
+[Teorema de Pitágoras en Wikipedia]: https://es.wikipedia.org/wiki/Teorema_de_Pitágoras
+```
+
+### Personaliza página `About`
+
+En tu blog encontrarás siempre arriba a la derecha el link `About`, este también es personalizable y ahí debes colocar algo acerca de ti y tu blog. Este es el contenido de ejemplo de mi `About`:
+
+```markdown
+---
+layout: page
+title: Acerca de Mí
+permalink: /about/
+---
+
+¡Hola! Soy Oscar García, un matemático apasionado por la divulgación. En este blog, te guiaré paso a paso en el proceso de crear tu propio blog utilizando Markdown, Jekyll y GitHub. Aprenderás cómo:
+
+* Instalar y configurar Jekyll y GitHub Pages
+* Escribir contenido utilizando Markdown, un lenguaje sencillo y eficaz para la creación de contenido web
+* Personalizar la apariencia de tu blog para que refleje tu estilo
+* ¡Y mucho más!
+
+Mi objetivo es que este blog te ayude a crear tu propio espacio en línea de forma fácil y gratuita, para que puedas compartir tus conocimientos e ideas con el mundo. 
+
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme. ¡Comienza tu aventura en el mundo de los blogs hoy mismo!
+```
+
+### Despliegue local (en tu computador)
+
+1. **Para ver el contenido de tu post de forma local** y hacer posibles ajustes, ejecuta este comando:
+
+   ```cmd
+   >> bundle exec jekyll serve --watch
+   ```
+
+2. **Para acceder a la página local:** En el navegardor de tu preferencia, ingresa a la dirección local [http://127.0.0.1:4000/](http://127.0.0.1:4000/)
+
+### Capturas del blog de ejemplo en local
+
+A continuación comparto algunas capturas del blog de ejemplo `comoHacerUnBlog`:
+
+#### Página principal
+<img src="/blogTest/assets/pagina_ppal.png" alt="img: página principal">
+
+#### About
+<img src="/blogTest/assets/acerca_de.png" alt="img: acerca de mi">
+
+#### Post de ejemplo
+<img src="/blogTest/assets/post_ejm.png" alt="img: post de ejemplo">
 
 ## Hacer tu blog visible en la red desplegándolo en GitHub
 
