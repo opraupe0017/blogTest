@@ -1,18 +1,16 @@
 ---
 layout: page
-title: About
+title: Acerca de mi
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+¡Hola! Soy Oscar García, un matemático apasionado por la divulgación. En este blog, te guiaré paso a paso en el proceso de crear tu propio blog utilizando Markdown, Jekyll y GitHub. Aprenderás cómo:
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+* Instalar y configurar Jekyll y GitHub Pages
+* Escribir contenido utilizando Markdown, un lenguaje sencillo y eficaz para la creación de contenido web
+* Personalizar la apariencia de tu blog para que refleje tu estilo
+* ¡Y mucho más!
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Mi objetivo es que este blog te ayude a crear tu propio espacio en línea de forma fácil y gratuita, para que puedas compartir tus conocimientos e ideas con el mundo. 
 
-
-[jekyll-organization]: https://github.com/jekyll
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme. ¡Comienza tu aventura en el mundo de los blogs hoy mismo!

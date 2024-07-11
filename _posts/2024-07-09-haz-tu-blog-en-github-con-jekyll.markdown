@@ -380,7 +380,7 @@ Estamos a nada de que tu blog lo pueda ver el mundo entero, sigue estos últimos
 
 3. Para ver el proceso de despliegue de tu página web puedes ir a **Actions** para monitorear el estado del despliegue de tu blog sobre GitHub. Cuando todo esté en luz verde podrás acceder a la página. Recuerda que la página de tu blog será `https://[tu-usuario-de-github].github.io/[tu-nombre-del-blog]`.
 
-¡Y esto es todo, ya tienes tu propio blog en línea y gratis!
+**¡Y esto es todo, ya tienes tu propio blog en línea y gratis!**
 
 ### Capturas del blog de ejemplo
 
